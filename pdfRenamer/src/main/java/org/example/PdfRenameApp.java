@@ -47,6 +47,16 @@ public class PdfRenameApp {
                 detectedValue = matcher.group().replace("-", "");  // remove dash
             }
 
+            // Add others condition sample
+            if (detectedValue == null) {
+                Pattern pattern1 = Pattern.compile("[A-Za-z]-\\d{1,2}-\\d{1,2}");
+                Matcher matcher1 = pattern.matcher(text);
+
+                if (matcher1.find()) {
+                    detectedValue = matcher.group().replace("-", "");  // remove dash
+                }
+            }
+
         } catch (IOException e) {
             System.out.println("Error reading: " + pdfFile.getName());
             e.printStackTrace();
